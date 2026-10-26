@@ -1,0 +1,7 @@
+{
+  "duration": 12,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#scene-gallery", "bySec": 0.1 },
+    { "kind": "keepsMoving", "withinSelector": "#root", "maxStaticSec": 2.1 }
+  ]
+}

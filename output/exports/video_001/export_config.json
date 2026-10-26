@@ -1,0 +1,9 @@
+{
+  "name": "video_001",
+  "input_collection": "media/images/collections/video_001",
+  "composition": "ui/hyperframes",
+  "planned_output": "output/exports/video_001/video_001.mp4",
+  "duration_seconds": 20,
+  "status": "rendered_and_verified",
+  "render_requested": true
+}

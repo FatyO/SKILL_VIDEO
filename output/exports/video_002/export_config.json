@@ -1,0 +1,11 @@
+{
+  "name": "video_002",
+  "input_collection": "media/images/collections/video_002",
+  "composition": "ui/projects/video_002",
+  "planned_output": "output/exports/video_002/video_002.mp4",
+  "duration_seconds": 20,
+  "format": "1920x1080@30fps",
+  "audio": "assets/audio/video_002-bgm.mp3",
+  "status": "rendered_and_verified",
+  "render_requested": true
+}

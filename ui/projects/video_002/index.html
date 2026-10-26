@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #010104; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #010104; }
+      #work-gallery { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+      .ambient { position: absolute; inset: -12%; z-index: 15; opacity: .18; pointer-events: none; background: radial-gradient(ellipse at 22% 32%, rgba(62,190,255,.48), transparent 43%), radial-gradient(ellipse at 76% 64%, rgba(255,95,48,.42), transparent 45%); mix-blend-mode: screen; }
+      .lens-ring { position: absolute; inset: 18px 38px; z-index: 20; pointer-events: none; border: 28px solid #010104; border-radius: 50%; box-shadow: 0 0 0 760px #010104, inset 0 0 118px 40px rgba(0,0,0,.94), inset 0 0 28px 7px rgba(58,165,255,.55); }
+      .lens-glow { position: absolute; inset: 45px 68px; z-index: 21; pointer-events: none; border: 5px solid rgba(78,189,255,.34); border-radius: 50%; box-shadow: 0 0 34px rgba(37,126,255,.58), inset 0 0 30px rgba(37,126,255,.40); mix-blend-mode: screen; }
+      .chroma-flash { position: absolute; inset: 0; z-index: 18; opacity: 0; pointer-events: none; background: linear-gradient(100deg, transparent 32%, rgba(0,220,255,.8) 45%, rgba(255,255,255,.92) 50%, rgba(255,35,118,.78) 55%, transparent 68%); mix-blend-mode: screen; }
+      .scan-flash { position: absolute; inset: 0; z-index: 19; opacity: 0; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 20px, rgba(145,230,255,.55) 21px 24px, transparent 25px 39px); mix-blend-mode: screen; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-v722" id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1920" data-height="1080" data-motion-blur="on" data-motion-blur-shutter="270">
+      <div data-hf-id="hf-zcyd" id="work-gallery" class="clip" data-composition-src="compositions/work-gallery.html" data-composition-id="work-gallery" data-start="0" data-duration="20" data-track-index="0" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-mxtu" id="ambient" class="clip ambient" data-start="0" data-duration="20" data-track-index="10" data-layout-ignore></div>
+      <div data-hf-id="hf-m47z" id="lens-ring" class="clip lens-ring" data-start="0" data-duration="20" data-track-index="11" data-layout-ignore></div>
+      <div data-hf-id="hf-c6ko" id="lens-glow" class="clip lens-glow" data-start="0" data-duration="20" data-track-index="12" data-layout-ignore></div>
+      <div data-hf-id="hf-1rj9" id="chroma-flash" class="clip chroma-flash" data-start="0" data-duration="20" data-track-index="13" data-layout-ignore></div>
+      <div data-hf-id="hf-82rm" id="scan-flash" class="clip scan-flash" data-start="0" data-duration="20" data-track-index="14" data-layout-ignore></div>
+      <audio id="bgm-video-002" class="clip" data-start="0" data-duration="20" data-track-index="20" data-audio-group="music" data-volume="0.24" data-fade-in="1.1" data-fade-out="1.8" src="assets/audio/video_002-bgm.mp3"></audio>
+      <hf-audio-group id="music" data-volume="1" data-fx-chain="{&quot;version&quot;:1,&quot;nodes&quot;:[{&quot;type&quot;:&quot;highpass&quot;,&quot;id&quot;:&quot;music-rumble&quot;,&quot;label&quot;:&quot;Limpiar graves&quot;,&quot;params&quot;:{&quot;frequency&quot;:48}},{&quot;type&quot;:&quot;limiter&quot;,&quot;id&quot;:&quot;music-limit&quot;,&quot;label&quot;:&quot;Controlar picos&quot;,&quot;params&quot;:{&quot;limit&quot;:-1}}]}"></hf-audio-group>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#ambient", { xPercent: -3, yPercent: -2, rotation: -1, opacity: .12 }, { xPercent: 3, yPercent: 2, rotation: 1, opacity: .24, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+      tl.fromTo("#lens-glow", { opacity: .55 }, { opacity: 1, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+      [2.5, 5, 7.5, 10, 12.5, 15, 17.5].forEach((at, i) => {
+        tl.fromTo("#chroma-flash", { xPercent: -112, opacity: 0 }, { xPercent: 112, opacity: .94, duration: .24, ease: "power3.inOut", yoyo: true, repeat: 1, immediateRender: false }, at - .20);
+        if (i % 2 === 1) tl.fromTo("#scan-flash", { yPercent: -20, opacity: 0 }, { yPercent: 20, opacity: .72, duration: .16, ease: "steps(3)", yoyo: true, repeat: 1, immediateRender: false }, at - .12);
+      });
+      window.__timelines.main = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

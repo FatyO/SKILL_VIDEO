@@ -1,0 +1,9 @@
+{
+  "skill": "skill-faty-lendedistorcionado",
+  "status": "video_002_complete_ready_for_next_test",
+  "instruction": "Wait for new loose media before creating the next collection",
+  "input_rule": "use_only_the_active_video_002_collection",
+  "active_collection": "video_002",
+  "imported_images": 8,
+  "previous_collection_excluded": "video_001"
+}

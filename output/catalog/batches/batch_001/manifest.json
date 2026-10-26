@@ -1,0 +1,23 @@
+{
+  "batch": "batch_001",
+  "batch_size": 3,
+  "video_count": 3,
+  "complete": true,
+  "videos": [
+    {
+      "id": "f229c638e2db53be",
+      "path": "videos/11971760_2160_3840_60fps.mp4",
+      "absolute_path": "C:\\Users\\Fatima\\Documents\\CENTRO\\7SEMESTRE\\INTELIGENCIAARTIFICIAL\\codex\\skillt\\video-motion-studio\\media\\videos\\11971760_2160_3840_60fps.mp4"
+    },
+    {
+      "id": "dc7b88f1d43f6293",
+      "path": "videos/13566476-hd_1080_1920_30fps.mp4",
+      "absolute_path": "C:\\Users\\Fatima\\Documents\\CENTRO\\7SEMESTRE\\INTELIGENCIAARTIFICIAL\\codex\\skillt\\video-motion-studio\\media\\videos\\13566476-hd_1080_1920_30fps.mp4"
+    },
+    {
+      "id": "44bf582453554407",
+      "path": "videos/17031997_2160_3840_50fps.mp4",
+      "absolute_path": "C:\\Users\\Fatima\\Documents\\CENTRO\\7SEMESTRE\\INTELIGENCIAARTIFICIAL\\codex\\skillt\\video-motion-studio\\media\\videos\\17031997_2160_3840_50fps.mp4"
+    }
+  ]
+}

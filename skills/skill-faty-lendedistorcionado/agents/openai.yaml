@@ -1,0 +1,7 @@
+interface:
+  display_name: "skill_faty_lendedistorcionado"
+  short_description: "Montajes con lente de terror distorsionada"
+  default_prompt: "Usa $skill-faty-lendedistorcionado para crear un montaje con la colección de media activa."
+policy:
+  allow_implicit_invocation: true
+

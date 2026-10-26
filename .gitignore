@@ -1,0 +1,40 @@
+# Credenciales y configuración local
+.env
+.env.*
+!.env.example
+
+# Python / Conda
+__pycache__/
+*.py[cod]
+.venv/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# HyperFrames: cachés y artefactos regenerables
+**/.hyperframes/
+**/.thumbnails/
+**/.media/
+**/renders/
+**/.waveform-cache/
+
+# Renders y revisión local
+output/exports/**/*.mp4
+output/exports/**/review/
+temp/
+
+# Media pesada de demostración del proyecto inicial
+ui/hyperframes/assets/media/*.mp4
+ui/hyperframes/assets/audio/*.wav
+
+# Binarios compilados del puente de herramientas
+tools/bin/
+tools/**/bin/
+tools/**/obj/
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

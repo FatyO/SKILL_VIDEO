@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #020206; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #020206; }
+      .scene-host { position: absolute; inset: 0; overflow: hidden; transform-origin: 50% 50%; }
+      #scene-gallery { z-index: 1; }
+      .lens-ring { position: absolute; inset: 8px 105px; z-index: 20; pointer-events: none; border: 34px solid #010106; border-radius: 50%; box-shadow: 0 0 0 700px #010106, inset 0 0 132px 50px rgba(0, 0, 0, 0.96), inset 0 0 25px 6px rgba(57, 151, 255, 0.5); }
+      .lens-glow { position: absolute; inset: 38px 135px; z-index: 21; pointer-events: none; border: 5px solid rgba(69, 174, 255, 0.38); border-radius: 50%; box-shadow: 0 0 34px rgba(34, 123, 255, 0.64), inset 0 0 34px rgba(34, 123, 255, 0.45); mix-blend-mode: screen; }
+      .chromatic-flash { position: absolute; inset: 0; z-index: 18; pointer-events: none; opacity: 0; background: radial-gradient(circle at 34% 44%, transparent 0 27%, rgba(175, 42, 255, 0.7) 48%, transparent 68%), radial-gradient(circle at 66% 56%, transparent 0 29%, rgba(92, 255, 50, 0.55) 50%, transparent 70%), linear-gradient(105deg, transparent 38%, rgba(255, 104, 20, 0.58) 50%, transparent 62%); mix-blend-mode: screen; }
+      .ambient-light { position: absolute; inset: -14%; z-index: 17; pointer-events: none; opacity: 0.14; background: radial-gradient(ellipse at 24% 36%, rgba(140, 55, 255, 0.5) 0, rgba(140, 55, 255, 0.14) 24%, transparent 48%), radial-gradient(ellipse at 74% 60%, rgba(255, 132, 35, 0.42) 0, rgba(255, 132, 35, 0.12) 25%, transparent 50%), radial-gradient(ellipse at 55% 35%, rgba(54, 198, 255, 0.35) 0, transparent 44%); mix-blend-mode: screen; }
+      .flash-line { position: absolute; inset: 0; z-index: 21; pointer-events: none; opacity: 0; background: linear-gradient(100deg, transparent 39%, rgba(188,63,255,.85) 46%, rgba(255,255,255,.95) 50%, rgba(93,255,55,.8) 54%, transparent 61%); mix-blend-mode: screen; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-wxyz" id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1920" data-height="1080" data-motion-blur="on" data-motion-blur-shutter="270">
+      <div data-hf-id="hf-dzbv" id="scene-gallery" class="clip scene-host" data-composition-src="compositions/scene-gallery.html" data-composition-id="scene-gallery" data-start="0" data-duration="20" data-track-index="0" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-a81l" id="ambient-light" class="clip ambient-light" data-start="0" data-duration="20" data-track-index="9" data-layout-ignore></div>
+      <div data-hf-id="hf-dj73" id="lens-ring" class="clip lens-ring" data-start="0" data-duration="20" data-track-index="10" data-layout-ignore></div>
+      <div data-hf-id="hf-5m3a" id="lens-glow" class="clip lens-glow" data-start="0" data-duration="20" data-track-index="11" data-layout-ignore></div>
+      <div data-hf-id="hf-lx09" id="chroma-flash" class="clip chromatic-flash" data-start="0" data-duration="20" data-track-index="12" data-layout-ignore></div>
+      <div data-hf-id="hf-eojg" id="flash-line" class="clip flash-line" data-start="0" data-duration="20" data-track-index="13" data-layout-ignore></div>
+      <audio data-hf-id="hf-music01" id="bgm-video-001" class="clip" data-start="0" data-duration="20" data-track-index="20" data-audio-group="music" data-volume="0.28" data-fade-in="1.2" data-fade-out="1.8" src="assets/audio/video_001-bgm.wav"></audio>
+      <hf-audio-group id="music" data-volume="1" data-fx-chain="{&quot;version&quot;:1,&quot;nodes&quot;:[{&quot;type&quot;:&quot;highpass&quot;,&quot;id&quot;:&quot;music-rumble&quot;,&quot;label&quot;:&quot;Limpiar graves&quot;,&quot;params&quot;:{&quot;frequency&quot;:55}},{&quot;type&quot;:&quot;limiter&quot;,&quot;id&quot;:&quot;music-limit&quot;,&quot;label&quot;:&quot;Controlar picos&quot;,&quot;params&quot;:{&quot;limit&quot;:-1}}]}"></hf-audio-group>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#chroma-flash", { opacity: 0, x: -22 }, { opacity: 0.88, x: 22, duration: 0.11, ease: "steps(1)", yoyo: true, repeat: 1 }, 3.89);
+      tl.fromTo("#flash-line", { xPercent: -120, opacity: 0 }, { xPercent: 120, opacity: 1, duration: 0.22, ease: "power3.inOut", yoyo: true, repeat: 1 }, 3.82);
+      [8, 12, 16].forEach((at) => {
+        tl.fromTo("#chroma-flash", { opacity: 0, x: -30, rotation: -4, scale: 0.94 }, { opacity: 0.92, x: 30, rotation: 4, scale: 1.08, duration: 0.13, ease: "steps(2)", yoyo: true, repeat: 1, immediateRender: false }, at - 0.13);
+        tl.fromTo("#flash-line", { xPercent: -120, opacity: 0 }, { xPercent: 120, opacity: 1, duration: 0.22, ease: "power3.inOut", yoyo: true, repeat: 1, immediateRender: false }, at - 0.18);
+      });
+      tl.fromTo("#ambient-light", { opacity: 0.1, xPercent: -3, yPercent: -2, rotation: -2, scale: 0.98 }, { opacity: 0.24, xPercent: 3, yPercent: 2, rotation: 2, scale: 1.04, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+      tl.fromTo("#lens-glow", { opacity: 0.55 }, { opacity: 1, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

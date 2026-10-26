@@ -1,0 +1,7 @@
+name: video-motion
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+

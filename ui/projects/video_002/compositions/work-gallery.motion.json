@@ -1,0 +1,8 @@
+{
+  "duration": 20,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#shot-1", "bySec": 0.7 },
+    { "kind": "staysInFrame", "selector": ".frame" },
+    { "kind": "keepsMoving", "withinSelector": "#root", "maxStaticSec": 2.6 }
+  ]
+}

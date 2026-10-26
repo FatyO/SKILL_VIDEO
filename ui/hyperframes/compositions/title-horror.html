@@ -1,0 +1,20 @@
+<template>
+  <style>
+    @font-face { font-family: "MysteryDisplay"; src: local("Impact"); }
+    @font-face { font-family: "MysterySans"; src: local("Arial"); }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+    .title-position { position: absolute; left: 440px; top: 118px; width: 1040px; text-align: center; }
+    .horror-title { display: inline-block; color: #e8e1b8; font-family: "MysteryDisplay"; font-size: 102px; line-height: .82; letter-spacing: 3px; text-transform: uppercase; -webkit-text-stroke: 7px #11110f; paint-order: stroke fill; text-shadow: 0 11px 0 #d9502e, 0 19px 0 #17120f, 0 27px 26px rgba(0,0,0,.82); }
+    .title-kicker { display: block; margin-bottom: 14px; color: #f0a43c; font-family: "MysterySans"; font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: 11px; text-shadow: 0 3px 0 #130b08; }
+  </style>
+  <div id="root" data-composition-id="title-horror" data-start="0" data-duration="2.25" data-width="1920" data-height="1080">
+    <div id="title-position" class="clip title-position" data-start="0" data-duration="2.25" data-track-index="0"><div id="horror-title" class="horror-title"><span class="title-kicker" data-hold>UNA HISTORIA DE MEDIANOCHE</span>EL BOSQUE<br>QUE OBSERVA</div></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#horror-title", { opacity: 0, y: -90, scale: 0.72, rotation: -3 }, { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 0.48, ease: "back.out(1.7)" }, 0.02);
+    tl.to("#horror-title", { opacity: 0, y: -28, scale: 1.08, duration: 0.28, ease: "power3.in" }, 1.92);
+    window.__timelines["title-horror"] = tl;
+  </script>
+</template>
